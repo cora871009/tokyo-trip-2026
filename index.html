@@ -277,9 +277,15 @@ onAuthStateChanged(auth,user=>{
 getRedirectResult(auth).catch(showError);
 window.tokyoCloud.writeCheck=async(key,state)=>{
  if(auth.currentUser?.uid!==ADMIN_UID||!navigator.onLine)throw Error('僅管理員可在線編輯');
- // A document must exist before updateDoc. Create once without overwriting existing data.
- await setDoc(sharedRef,{checks:{}},{merge:true});
- await updateDoc(sharedRef,new FieldPath('checks',key),state);
+ // Atomic single-field update: never replace the whole shared checks map.
+ // FieldPath also handles keys safely without interpreting dots as nested fields.
+ try{
+  await updateDoc(sharedRef,new FieldPath('checks',key),state);
+ }catch(err){
+  if(err.code==='not-found'){
+   await setDoc(sharedRef,{checks:{[key]:state}},{merge:true});
+  }else{throw err}
+ }
 };
 window.tokyoCloud.writeExpenses=async(rows)=>{
  if(auth.currentUser?.uid!==ADMIN_UID||!navigator.onLine)throw Error('僅管理員可在線編輯');
