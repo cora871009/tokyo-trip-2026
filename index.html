@@ -158,6 +158,54 @@ a:focus-visible,button:focus-visible,input:focus-visible,summary:focus-visible{o
  #stay .stay-two-columns>.card{padding:10px}
  #prepList>.card,#packingList>.card,#returnList>.card{padding:10px}
 }
+
+/* Mobile-first legibility pass: keep requested two-column groups, remove tiny type. */
+@media(max-width:699px){
+ html{-webkit-text-size-adjust:100%}
+ body{font-size:16px;line-height:1.72}
+ main{padding:12px 12px 48px}
+ section{margin:22px 0}
+ h2{font-size:22px;line-height:1.4;margin-bottom:11px}
+ h3,.event h3{font-size:18px;line-height:1.45}
+ .event{font-size:16px;line-height:1.75;padding:13px}
+ .event .detail,.event li,.venue-desc{font-size:15px;line-height:1.7}
+ .muted,.small,.venue-hours{font-size:14px;line-height:1.65}
+ .time{font-size:15px}
+ .tag{font-size:13px;line-height:1.5}
+ .nav{padding:9px 11px;gap:7px}
+ .nav a,.nav #firebase-login-panel button{font-size:14px;min-height:36px}
+ .date-tabs button{font-size:14px;min-height:46px}
+ .checkitem,.tri-check-row{font-size:15px;line-height:1.65;padding:10px 0;gap:7px}
+ .checkitem input{width:24px;height:24px;min-width:24px}
+ .tri-check{min-width:30px;height:30px}
+ .checkitem input:checked+span{opacity:.85}
+ #prepList.checklist-grid,#packingList.checklist-grid,#returnList.checklist-grid,#stay .stay-two-columns{grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}
+ #prepList>.card,#packingList>.card,#returnList>.card,#stay .stay-two-columns>.card{min-width:0;padding:11px;border-radius:15px;overflow-wrap:anywhere}
+ #prepList h3,#packingList h3,#returnList h3,#stay .stay-two-columns h3{font-size:16px;line-height:1.4;margin-bottom:9px}
+ #prepList .checkitem,#packingList .checkitem,#returnList .checkitem,#stay .stay-two-columns .checkitem{font-size:14px;line-height:1.55;padding:9px 0;gap:6px}
+ #stay .stay-two-columns p{font-size:14px;line-height:1.65}
+ #stay .stay-two-columns .tag{font-size:12px}
+ #prepList .checkitem input,#packingList .checkitem input,#returnList .checkitem input,#stay .checkitem input{width:22px;height:22px;min-width:22px}
+ .esim-step summary,.esim-accordion{font-size:14px;line-height:1.65}
+ .esim-help,.tri-hint{font-size:13px;line-height:1.6}
+ #flights .flight-cards .card{padding:11px}
+ #flights .flight-cards h3{font-size:16px}
+ #flights .flight-cards .airport{font-size:clamp(20px,5.5vw,25px)}
+ #flights .flight-cards .flight{font-size:13px}
+ #flights .flight-cards .checkitem{font-size:14px}
+ #home.hero{grid-template-columns:minmax(0,1fr) 30%;padding:12px;gap:6px}
+ #home .eyebrow{font-size:11px;line-height:1.4}
+ #home h1{font-size:clamp(24px,6vw,30px)}
+ #home p,#home .count{font-size:13px}
+ #home .hero-art{max-height:120px}
+ .route-card,.skyliner-steps,.osambashi-guide,.suica-buy-tip{font-size:15px}
+ .custom-packing-form input,.custom-packing-form button{font-size:14px;min-height:42px}
+}
+@media(max-width:360px){
+ #prepList>.card,#packingList>.card,#returnList>.card,#stay .stay-two-columns>.card{padding:9px}
+ #prepList .checkitem,#packingList .checkitem,#returnList .checkitem,#stay .stay-two-columns .checkitem{font-size:14px}
+ #home.hero{grid-template-columns:minmax(0,1fr) 25%}
+}
 </style></head><body><header><nav class="nav"><span class="logo">🍡 東京旅遊手帳</span><a href="#home">首頁</a><a href="#flights">航班</a><a href="#days">每日行程</a><a href="#stay">住宿</a><a href="#prep">行前準備</a><a href="#packing">行李</a><a href="#return">回國確認</a><section id="firebase-login-panel" aria-label="管理員 Google 登入"><button id="firebase-login-button" type="button" disabled>管理員 Google 登入</button><button id="firebase-logout-button" type="button" hidden>管理員登出</button><div class="login-detail" id="firebase-login-status" role="status" aria-live="polite">正在連線 Firebase…</div><div class="login-detail" id="cloud-sync-status" aria-live="polite">正在讀取共用資料…</div><details id="admin-tools" hidden><summary title="管理員工具">⚙</summary><button type="button" id="import-local-data" hidden>匯入此裝置舊有勾選與花費</button></details></section></nav></header><main><section id="home" class="hero"><div><div class="eyebrow">JAPAN · WINTER STORY 2026—2027</div><h1>東京，<br>一起去旅行！</h1><p>七天六夜 · 2026.12.26 — 2027.01.01</p><div id="countdown" class="count" aria-live="polite">計算出發倒數中…</div></div><svg class="hero-art" viewBox="0 0 520 310" role="img" aria-label="日系繪本風的富士山、東京鐵塔、晴空塔、電車與櫻色雲朵"><rect x="0" y="0" width="520" height="310" fill="#fff5e7"/><g class="sun"><circle cx="390" cy="60" r="37" fill="#F6D27A" stroke="#3E3A39" stroke-width="3"/></g><g class="cloud" fill="white" stroke="#3E3A39" stroke-width="3"><path d="M45 80 Q28 57 56 48 Q66 18 94 39 Q120 24 129 53 Q158 55 145 80Z"/><path d="M330 125 Q315 104 337 99 Q351 72 373 95 Q399 84 410 107 Q434 110 423 125Z"/></g><path d="M0 255 L175 78 L335 255Z" fill="#A8D3E6" stroke="#3E3A39" stroke-width="4"/><path d="M117 136 L175 78 L230 136 L204 130 L185 145 L167 125 L149 146Z" fill="white" stroke="#3E3A39" stroke-width="3"/><g stroke="#3E3A39" stroke-width="4" stroke-linejoin="round"><path d="M338 256 L372 66 L407 256Z" fill="#F2A497"/><path d="M350 192 H395 M357 153 H388 M364 111 H380" fill="none"/><path d="M329 211 H415 L405 224 H340Z" fill="#F6D27A"/><path d="M443 255 V90 H474 V255" fill="#B9DAA5"/><path d="M437 123 H480 M437 170 H480 M437 214 H480"/></g><path d="M0 261 Q100 238 180 263 Q270 235 360 265 Q440 248 520 259 L520 310 H0Z" fill="#B9DAA5" stroke="#3E3A39" stroke-width="3"/><g class="train"><rect x="90" y="231" width="220" height="56" rx="22" fill="#FFFCF6" stroke="#3E3A39" stroke-width="4"/><rect x="115" y="241" width="46" height="22" rx="5" fill="#A8D3E6" stroke="#3E3A39" stroke-width="3"/><rect x="171" y="241" width="46" height="22" rx="5" fill="#A8D3E6" stroke="#3E3A39" stroke-width="3"/><rect x="229" y="241" width="48" height="22" rx="5" fill="#A8D3E6" stroke="#3E3A39" stroke-width="3"/><path d="M95 270 H305" stroke="#F2A497" stroke-width="8"/><circle cx="141" cy="287" r="7" fill="#3E3A39"/><circle cx="263" cy="287" r="7" fill="#3E3A39"/></g></svg></section>
 <section id="flights"><h2>✈️ 航班小卡</h2><div class="day-progress" aria-label="航班報到進度" style="margin-top:14px"><div class="section-head"><strong>✈️ 航班報到完成進度</strong><span class="muted" id="flightPct" aria-live="polite">0 / 2 已完成</span></div><div class="progress" role="progressbar" aria-label="航班報到完成比例" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" id="flightProgressTrack"><div id="flightBar"></div></div></div><div class="grid flight-cards"><article class="card blue"><span class="tag">去程 · 12/26（六）</span><h3>國泰航空 CX450</h3><div class="flight"><div><div class="airport">TPE</div><div>12:50</div><small>桃園 T1</small></div><div>✈️ ➜</div><div style="text-align:right"><div class="airport">NRT</div><div>16:50</div><small>成田 T2</small></div></div><label class="checkitem"><input type="checkbox" data-flight-check="outbound"><span>12/24 12:50線上報到選位<br>(選位偏好：左側 A，前後 10 排)</span></label></article><article class="card pink"><span class="tag">回程 · 01/01（五）</span><h3>國泰航空 CX451</h3><div class="flight"><div><div class="airport">NRT</div><div>15:30</div><small>成田 T2</small></div><div>✈️ ➜</div><div style="text-align:right"><div class="airport">TPE</div><div>18:35</div><small>桃園 T1</small></div></div><label class="checkitem"><input type="checkbox" data-flight-check="inbound"><span>12/30 15:30線上報到選位<br>（選位偏好：右側 K，前後 10 排）</span></label></article></div></section>
 <section id="stay"><h2>🏡 住宿資訊</h2><div class="day-progress" aria-label="住宿資訊完成進度" style="margin-top:14px"><div class="section-head"><strong>🏡 住宿資訊完成進度</strong><span class="muted" id="stayPct" aria-live="polite">0 / 2 已完成</span></div><div class="progress" role="progressbar" aria-label="住宿資訊完成比例" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" id="stayProgressTrack"><div id="stayBar"></div></div></div><div class="grid stay-two-columns"><div class="card green stay-accommodation"><h3>🏨 台北與東京住宿</h3><div class="stay-entry"><span class="tag">台北 · 前一晚</span><h3>美好行旅 WonderTime 北車重慶館 <a class="maplink" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=美好行旅+北車重慶館">📍 開啟地圖</a></h3><p>入住：12/25 15:00｜退房：12/26 09:40<br></p><div id="stayTaipeiCheck"></div></div><div class="stay-entry"><span class="tag">東京 · 6 晚</span><h3>W Hostel <a class="maplink" target="_blank" rel="noopener" href="https://maps.app.goo.gl/HJQbpg9qLyLYybbe6">📍 開啟地圖</a></h3><p>東京都北區上十条 1丁目17−21，114-0034，日本</p><p>☎️ <a href="tel:+8107012352653">+81 070-1235-2653</a><br>入住：12/26 19:00｜退房：01/01 11:00<br></p><div id="stayTokyoCheck"></div></div></div><div class="card yellow"><h3>🛒 十條生活補給</h3><p><strong>便利商店：</strong><a href="https://www.google.com/maps/search/?api=1&amp;query=Lawson%20%E5%8D%81%E6%9D%A1%E9%A7%85%E8%A5%BF%E5%8F%A3%20%E6%9D%B1%E4%BA%AC%20%E6%97%A5%E6%9C%AC" target="_blank" rel="noopener noreferrer">Lawson 十条駅西口</a>（24小時）、<a href="https://www.google.com/maps/search/?api=1&amp;query=%E3%83%95%E3%82%A1%E3%83%9F%E3%83%AA%E3%83%BC%E3%83%9E%E3%83%BC%E3%83%88%20%E5%8C%97%E5%8C%BA%E5%8D%81%E6%9D%A1%E8%A5%BF%E5%8F%A3%E5%BA%97%20%E6%9D%B1%E4%BA%AC" target="_blank" rel="noopener noreferrer">FamilyMart 北区十条西口</a>（24小時）、<a href="https://maps.app.goo.gl/sdhxZ37dQqGSgFXt6" target="_blank" rel="noopener noreferrer">7-Eleven 十条駅前</a>（24小時）、<a href="https://maps.app.goo.gl/ieeexi68yREhgpPe8" target="_blank" rel="noopener noreferrer">7-Eleven 北区十条銀座商店街</a>（24小時）、<a href="https://www.google.com/maps/search/?api=1&amp;query=NewDays%20%E5%8D%81%E6%9D%A1%E9%A7%85%20%E6%9D%B1%E4%BA%AC" target="_blank" rel="noopener noreferrer">NewDays 十条</a>（06:15–22:00）。</p><p><strong>超市：</strong><a href="https://www.google.com/maps/search/?api=1&amp;query=%E3%81%BE%E3%81%84%E3%81%B0%E3%81%99%E3%81%91%E3%81%A3%E3%81%A8%20%E5%8D%81%E6%9D%A1%E9%8A%80%E5%BA%A7%E6%9D%B1%E9%80%9A%E3%82%8A%E5%BA%97%20%E6%9D%B1%E4%BA%AC" target="_blank" rel="noopener noreferrer">My Basket 十条銀座東通り</a>（07:00–00:00）、<a href="https://www.google.com/maps/search/?api=1&amp;query=%E3%83%9F%E3%83%A9%E3%83%99%E3%83%AB%20%E3%82%AB%E3%83%88%E3%82%A6%E5%8D%81%E6%9D%A1%E5%BA%97%20%E6%9D%B1%E4%BA%AC" target="_blank" rel="noopener noreferrer">Miraberukatojujoten</a>（09:30–23:00）、<a href="https://www.google.com/maps/search/?api=1&amp;query=%E3%82%B9%E3%83%BC%E3%83%91%E3%83%BC%E3%81%BE%E3%81%84%E3%81%AB%E3%81%A1%20%E5%8D%81%E6%9D%A1%20%E6%9D%B1%E4%BA%AC" target="_blank" rel="noopener noreferrer">スーパーまいにち</a>（11:00–23:59）。</p><p><strong>逛街：</strong><a href="https://maps.app.goo.gl/dJdeFpBFNMKE31adA" target="_blank" rel="noopener noreferrer">十條銀座商店街</a>，步行約 5 分。</p></div></div></section>
